@@ -23,3 +23,17 @@ and log the operation in the log $logfile
 
 # How to use the GUI
 probabily it's useless yet :)
+
+# Requirements
+
+you should install python (version 2.7 or 3 should work fine!) and the python library that's responsible for reading the fitsheader: pyfits. You could install it with pip:
+
+```bash
+pip install pyfits
+```
+
+For the GUI you should install PythonCard (only python 2.7) and execute:
+
+```bash
+python ${workspace}/dbFit/src/main.py
+```
