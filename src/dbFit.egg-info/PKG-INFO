@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: dbFit
+Version: 0.0.2
+Summary: Walk a folder and his subtrees and parse the fits it founds to extrapolate the header and save it to a sqlite3 db or a csv file
+Home-page: not yet
+Author: Alessio Caradossi
+Author-email: alkcxy@gmail.com
+License: BSD
+Description: Il progetto richiede la presenza di:
+        python-2.6o superiore, credo
+        python-pyfits-2.3.1
+        pythoncard-0.8.2
+        
+Keywords: for csv,just execute fits.py -i <inputdir> -o <outputfile>
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: BSD License

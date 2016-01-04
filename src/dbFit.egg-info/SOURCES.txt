@@ -1,0 +1,11 @@
+README
+dbfit.ini
+fits.py
+main.py
+main.rsrc.py
+rename.py
+setup.py
+dbFit.egg-info/PKG-INFO
+dbFit.egg-info/SOURCES.txt
+dbFit.egg-info/dependency_links.txt
+dbFit.egg-info/top_level.txt
