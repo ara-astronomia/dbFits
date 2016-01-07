@@ -35,11 +35,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
     except getopt.GetoptError:
-        print 'test.py -i <inputdir> -o <outputfile>'
+        print('test.py -i <inputdir> -o <outputfile>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print 'test.py -i <inputdir> -o <outputfile>'
+            print('test.py -i <inputdir> -o <outputfile>')
             sys.exit()
         elif opt in ("-i", "--idir"):
             inputdir = arg
@@ -59,11 +59,11 @@ def main(argv):
                     headers[5] = str(headers[6])
                 if headers[8] is None or headers[8] == '':
                     headers[8] = str(headers[9])
-                print headers[3]
+                print(headers[3])
                 del headers[4]
-                print headers[4]
+                print(headers[4])
                 del headers[5]
-                print headers[5]
+                print(headers[5])
                 del headers[7]
                 list = [ file_path ] + headers
                 #c.execute('insert into fits_headers values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', list)
@@ -79,7 +79,7 @@ def main(argv):
         result =  "Nessun cambiamento nel db"
     if err is not 0:
         result = result+". Ci sono stati "+str(err)+" errori."
-    print result
+    print(result)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

@@ -49,12 +49,12 @@ class Main(model.Background):
             c.execute('''CREATE TABLE "fits_headers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "FILENAME" varchar(255), "SIMPLE" varchar(255), "NAXIS1" integer, "NAXIS2" integer, "DATE_OBS" datetime, "EXPOSURE" integer, "SET_TEMP" integer, "CCD_TEMP" decimal, "XPIXSZ" integer, "YPIXSZ" integer, "XBINNING" integer, "YBINNING" integer, "FILTER" varchar(255), "IMAGETYP" varchar(255), "FOCUSPOS" integer, "FOCUSTEM" decimal, "OBJCTRA" varchar(255), "OBJCTDEC" varchar(255), "OBJCTALT" decimal, "OBJCTAZ" decimal, "OBJCTHA" decimal, "SITELAT" varchar(255), "SITELONG" varchar(255), "AIRMASS" decimal, "FOCALLEN" integer, "APTDIA" integer, "APTAREA" decimal, "OBJECT" varchar(255), "TELESCOP" varchar(255), "INSTRUME" varchar(255), "OBSERVER" varchar(255), "NOTES" varchar(255), "RDNOISE" integer, "GAIN" decimal, "p_invest" varchar(255))''')
             #c.execute('''CREATE UNIQUE INDEX "index_fits_headers_on_DATE_OBS" ON "fits_headers" ("DATE_OBS")''')
             c.execute('''CREATE UNIQUE INDEX "index_fits_headers_on_FILENAME" ON "fits_headers" ("FILENAME")''')
-            print "Creo il db e mi connetto"
+            print("Creo il db e mi connetto")
         else:
             #use existing DB
             conn = sqlite3.connect(sqlitedb)
             c = conn.cursor()
-            print "Db esistente, mi connetto"
+            print("Db esistente, mi connetto")
         return conn
 
     def get_header(self,prihdr):
@@ -112,17 +112,17 @@ class Main(model.Background):
                                 #c.execute('insert into fits_headers values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', list)
                                 #csv = open("fits.csv",  "a")
                                 for field in list:
-                                    print field
+                                    print(field)
                                     #csv.write(field)
                                 #csv.close()
                                 new += 1
                             except:
-                                print "i dati sono presenti nel db per: "+file_path
+                                print("i dati sono presenti nel db per: "+file_path)
                             conn.commit()
                             hdulist.close()
                         except:
                             err += 1
-                            print "errore nel fits header, file non inserito: "+file_path
+                            print("errore nel fits header, file non inserito: "+file_path)
             if new is not 0:
                 result =  "Nuovi dati inseriti nel db: "+str(new)+" fits header aggiunti."
             else:
@@ -144,19 +144,19 @@ class Main(model.Background):
             if len(str(row[5]).split('/')) > 1:
                 day, month, year = str(row[5]).split('/')
                 prith = '20'+year+'-'+month+'-'+day
-                print str(len(row[5].split('/')))+" "+row[5]
-                print prith
+                print(str(len(row[5].split('/')))+" "+row[5])
+                print(prith)
                 update_tuple = (prith, row[5])
                 try:
                     c.execute('update fits_headers set DATE_OBS = ? where DATE_OBS = ?', update_tuple)
                 except:
-                    print "errore"
+                    print("errore")
             if row[5] == "":
                 update_tuple = ('1900-01-01T00:00:00', row[5])
                 try:
                     c.execute('update fits_headers set DATE_OBS = ? where DATE_OBS = ?', update_tuple)
                 except:
-                    print "errore"
+                    print("errore")
         conn.commit()
         c.close()
         self.components.message.text = "Aggiornamento date eseguito"
