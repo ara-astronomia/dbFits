@@ -32,7 +32,7 @@ you should install python (version 2.7 or 3 should work fine!) and the python li
 pip install pyfits
 ```
 
-For the GUI you should install PythonCard (only python 2.7) and execute:
+For the GUI you should install PythonCard and execute:
 
 ```bash
 python ${workspace}/dbFit/src/main.py
