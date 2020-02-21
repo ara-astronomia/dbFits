@@ -1,5 +1,5 @@
 import os
-import pyfits
+from astropy.io import fits as pyfits
 import sys
 import getopt
 
@@ -73,11 +73,11 @@ def main(argv):
                 new += 1
                 hdulist.close()
     csv.close()
-    if new is not 0:
+    if new != 0:
         result =  "Nuovi dati inseriti nel db: "+str(new)+" fits header aggiunti."
     else:
         result =  "Nessun cambiamento nel db"
-    if err is not 0:
+    if err != 0:
         result = result+". Ci sono stati "+str(err)+" errori."
     print(result)
 
